@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SimpleRendererRouteImport } from './routes/simple-renderer'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SimpleRendererRoute = SimpleRendererRouteImport.update({
+  id: '/simple-renderer',
+  path: '/simple-renderer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/simple-renderer': typeof SimpleRendererRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/simple-renderer': typeof SimpleRendererRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/simple-renderer': typeof SimpleRendererRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/simple-renderer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/simple-renderer'
+  id: '__root__' | '/' | '/simple-renderer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SimpleRendererRoute: typeof SimpleRendererRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/simple-renderer': {
+      id: '/simple-renderer'
+      path: '/simple-renderer'
+      fullPath: '/simple-renderer'
+      preLoaderRoute: typeof SimpleRendererRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SimpleRendererRoute: SimpleRendererRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
