@@ -10,11 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DebuggerRouteImport } from './routes/debugger'
+import { Route as LightingRouteImport } from './routes/lighting'
 import { Route as SimpleRendererRouteImport } from './routes/simple-renderer'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DebuggerRoute = DebuggerRouteImport.update({
+  id: '/debugger',
+  path: '/debugger',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LightingRoute = LightingRouteImport.update({
+  id: '/lighting',
+  path: '/lighting',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SimpleRendererRoute = SimpleRendererRouteImport.update({
@@ -25,27 +37,35 @@ const SimpleRendererRoute = SimpleRendererRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/debugger': typeof DebuggerRoute
+  '/lighting': typeof LightingRoute
   '/simple-renderer': typeof SimpleRendererRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/debugger': typeof DebuggerRoute
+  '/lighting': typeof LightingRoute
   '/simple-renderer': typeof SimpleRendererRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/debugger': typeof DebuggerRoute
+  '/lighting': typeof LightingRoute
   '/simple-renderer': typeof SimpleRendererRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/simple-renderer'
+  fullPaths: '/' | '/debugger' | '/lighting' | '/simple-renderer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/simple-renderer'
-  id: '__root__' | '/' | '/simple-renderer'
+  to: '/' | '/debugger' | '/lighting' | '/simple-renderer'
+  id: '__root__' | '/' | '/debugger' | '/lighting' | '/simple-renderer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DebuggerRoute: typeof DebuggerRoute
+  LightingRoute: typeof LightingRoute
   SimpleRendererRoute: typeof SimpleRendererRoute
 }
 
@@ -56,6 +76,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/debugger': {
+      id: '/debugger'
+      path: '/debugger'
+      fullPath: '/debugger'
+      preLoaderRoute: typeof DebuggerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lighting': {
+      id: '/lighting'
+      path: '/lighting'
+      fullPath: '/lighting'
+      preLoaderRoute: typeof LightingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/simple-renderer': {
@@ -70,6 +104,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DebuggerRoute: DebuggerRoute,
+  LightingRoute: LightingRoute,
   SimpleRendererRoute: SimpleRendererRoute,
 }
 export const routeTree = rootRouteImport
