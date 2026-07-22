@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DebuggerRouteImport } from './routes/debugger'
 import { Route as LightingRouteImport } from './routes/lighting'
 import { Route as ShapesRouteImport } from './routes/shapes'
+import { Route as SidesRouteImport } from './routes/sides'
 import { Route as SimpleRendererRouteImport } from './routes/simple-renderer'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +36,11 @@ const ShapesRoute = ShapesRouteImport.update({
   path: '/shapes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SidesRoute = SidesRouteImport.update({
+  id: '/sides',
+  path: '/sides',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SimpleRendererRoute = SimpleRendererRouteImport.update({
   id: '/simple-renderer',
   path: '/simple-renderer',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/debugger': typeof DebuggerRoute
   '/lighting': typeof LightingRoute
   '/shapes': typeof ShapesRoute
+  '/sides': typeof SidesRoute
   '/simple-renderer': typeof SimpleRendererRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/debugger': typeof DebuggerRoute
   '/lighting': typeof LightingRoute
   '/shapes': typeof ShapesRoute
+  '/sides': typeof SidesRoute
   '/simple-renderer': typeof SimpleRendererRoute
 }
 export interface FileRoutesById {
@@ -61,19 +69,23 @@ export interface FileRoutesById {
   '/debugger': typeof DebuggerRoute
   '/lighting': typeof LightingRoute
   '/shapes': typeof ShapesRoute
+  '/sides': typeof SidesRoute
   '/simple-renderer': typeof SimpleRendererRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/debugger' | '/lighting' | '/shapes' | '/simple-renderer'
+  fullPaths:
+    '/' | '/debugger' | '/lighting' | '/shapes' | '/sides' | '/simple-renderer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/debugger' | '/lighting' | '/shapes' | '/simple-renderer'
+  to:
+    '/' | '/debugger' | '/lighting' | '/shapes' | '/sides' | '/simple-renderer'
   id:
     | '__root__'
     | '/'
     | '/debugger'
     | '/lighting'
     | '/shapes'
+    | '/sides'
     | '/simple-renderer'
   fileRoutesById: FileRoutesById
 }
@@ -82,6 +94,7 @@ export interface RootRouteChildren {
   DebuggerRoute: typeof DebuggerRoute
   LightingRoute: typeof LightingRoute
   ShapesRoute: typeof ShapesRoute
+  SidesRoute: typeof SidesRoute
   SimpleRendererRoute: typeof SimpleRendererRoute
 }
 
@@ -115,6 +128,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShapesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sides': {
+      id: '/sides'
+      path: '/sides'
+      fullPath: '/sides'
+      preLoaderRoute: typeof SidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/simple-renderer': {
       id: '/simple-renderer'
       path: '/simple-renderer'
@@ -130,6 +150,7 @@ const rootRouteChildren: RootRouteChildren = {
   DebuggerRoute: DebuggerRoute,
   LightingRoute: LightingRoute,
   ShapesRoute: ShapesRoute,
+  SidesRoute: SidesRoute,
   SimpleRendererRoute: SimpleRendererRoute,
 }
 export const routeTree = rootRouteImport

@@ -10,6 +10,7 @@ function App() {
 				<Link to="/lighting">Lighting</Link>
 				<Link to="/debugger">Debugger</Link>
 				<Link to="/shapes">Shapes</Link>
+				<Link to="/sides">Material Sides</Link>
 			</nav>
 		</main>
 	);
