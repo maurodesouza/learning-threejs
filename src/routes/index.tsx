@@ -9,6 +9,7 @@ function App() {
 				<Link to="/simple-renderer">Simple Renderer</Link>
 				<Link to="/lighting">Lighting</Link>
 				<Link to="/debugger">Debugger</Link>
+				<Link to="/shapes">Shapes</Link>
 			</nav>
 		</main>
 	);
