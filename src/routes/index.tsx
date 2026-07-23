@@ -11,6 +11,7 @@ function App() {
 				<Link to="/debugger">Debugger</Link>
 				<Link to="/shapes">Shapes</Link>
 				<Link to="/sides">Material Sides</Link>
+				<Link to="/paths">Paths</Link>
 			</nav>
 		</main>
 	);
