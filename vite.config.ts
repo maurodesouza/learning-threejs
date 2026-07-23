@@ -6,7 +6,6 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
-// Adjust this if the GitHub repository name changes.
 const base = "/learning-threejs/";
 
 const config = defineConfig({
