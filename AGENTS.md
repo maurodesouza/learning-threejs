@@ -1,3 +1,9 @@
+## Deployment
+
+The project is configured to deploy to GitHub Pages from the `main` branch using `.github/workflows/deploy.yml`. After pushing, go to **Settings > Pages** in the repository and set the source to **GitHub Actions**.
+
+The `base` path in `vite.config.ts` is set to `/learning-threejs/`. If the repository is renamed, update both the Vite `base` and the router `basepath` in `src/router.tsx`.
+
 <!-- intent-skills:start -->
 # TanStack Intent - before editing files, run the matching guidance command.
 tanstackIntent:
