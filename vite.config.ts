@@ -12,7 +12,19 @@ const base = "/learning-threejs/";
 const config = defineConfig({
 	base,
 	resolve: { tsconfigPaths: true },
-	plugins: [devtools(), tailwindcss(), tanstackStart(), viteReact()],
+	plugins: [
+		devtools(),
+		tailwindcss(),
+		tanstackStart({
+			prerender: {
+				enabled: true,
+				crawlLinks: true,
+				concurrency: 14,
+				failOnError: true,
+			},
+		}),
+		viteReact(),
+	],
 });
 
 export default config;
