@@ -134,6 +134,7 @@ function RouteComponent() {
 				color: 0x334155,
 				roughness: 0.8,
 				metalness: 0.1,
+				side: three.DoubleSide,
 			});
 			const plane = new three.Mesh(planeGeometry, planeMaterial);
 			plane.rotation.x = -Math.PI / 2;
