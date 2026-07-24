@@ -13,6 +13,7 @@ function App() {
 				<Link to="/sides">Material Sides</Link>
 				<Link to="/paths">Paths</Link>
 				<Link to="/lights">Lights</Link>
+				<Link to="/materials">Materials</Link>
 			</nav>
 		</main>
 	);
