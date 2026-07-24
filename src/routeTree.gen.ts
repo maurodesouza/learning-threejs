@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DebuggerRouteImport } from './routes/debugger'
 import { Route as LightingRouteImport } from './routes/lighting'
+import { Route as LightsRouteImport } from './routes/lights'
 import { Route as PathsRouteImport } from './routes/paths'
 import { Route as ShapesRouteImport } from './routes/shapes'
 import { Route as SidesRouteImport } from './routes/sides'
@@ -30,6 +31,11 @@ const DebuggerRoute = DebuggerRouteImport.update({
 const LightingRoute = LightingRouteImport.update({
   id: '/lighting',
   path: '/lighting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LightsRoute = LightsRouteImport.update({
+  id: '/lights',
+  path: '/lights',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PathsRoute = PathsRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/debugger': typeof DebuggerRoute
   '/lighting': typeof LightingRoute
+  '/lights': typeof LightsRoute
   '/paths': typeof PathsRoute
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/debugger': typeof DebuggerRoute
   '/lighting': typeof LightingRoute
+  '/lights': typeof LightsRoute
   '/paths': typeof PathsRoute
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/debugger': typeof DebuggerRoute
   '/lighting': typeof LightingRoute
+  '/lights': typeof LightsRoute
   '/paths': typeof PathsRoute
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/debugger'
     | '/lighting'
+    | '/lights'
     | '/paths'
     | '/shapes'
     | '/sides'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/debugger'
     | '/lighting'
+    | '/lights'
     | '/paths'
     | '/shapes'
     | '/sides'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/debugger'
     | '/lighting'
+    | '/lights'
     | '/paths'
     | '/shapes'
     | '/sides'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DebuggerRoute: typeof DebuggerRoute
   LightingRoute: typeof LightingRoute
+  LightsRoute: typeof LightsRoute
   PathsRoute: typeof PathsRoute
   ShapesRoute: typeof ShapesRoute
   SidesRoute: typeof SidesRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/lighting'
       fullPath: '/lighting'
       preLoaderRoute: typeof LightingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lights': {
+      id: '/lights'
+      path: '/lights'
+      fullPath: '/lights'
+      preLoaderRoute: typeof LightsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/paths': {
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DebuggerRoute: DebuggerRoute,
   LightingRoute: LightingRoute,
+  LightsRoute: LightsRoute,
   PathsRoute: PathsRoute,
   ShapesRoute: ShapesRoute,
   SidesRoute: SidesRoute,
