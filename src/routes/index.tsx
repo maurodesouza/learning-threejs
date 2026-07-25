@@ -14,6 +14,7 @@ function App() {
 				<Link to="/paths">Paths</Link>
 				<Link to="/lights">Lights</Link>
 				<Link to="/materials">Materials</Link>
+				<Link to="/move-camera">Move Camera</Link>
 			</nav>
 		</main>
 	);

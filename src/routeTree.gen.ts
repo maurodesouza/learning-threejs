@@ -14,6 +14,7 @@ import { Route as DebuggerRouteImport } from './routes/debugger'
 import { Route as LightingRouteImport } from './routes/lighting'
 import { Route as LightsRouteImport } from './routes/lights'
 import { Route as MaterialsRouteImport } from './routes/materials'
+import { Route as MoveCameraRouteImport } from './routes/move-camera'
 import { Route as PathsRouteImport } from './routes/paths'
 import { Route as ShapesRouteImport } from './routes/shapes'
 import { Route as SidesRouteImport } from './routes/sides'
@@ -44,6 +45,11 @@ const MaterialsRoute = MaterialsRouteImport.update({
   path: '/materials',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MoveCameraRoute = MoveCameraRouteImport.update({
+  id: '/move-camera',
+  path: '/move-camera',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PathsRoute = PathsRouteImport.update({
   id: '/paths',
   path: '/paths',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/lighting': typeof LightingRoute
   '/lights': typeof LightsRoute
   '/materials': typeof MaterialsRoute
+  '/move-camera': typeof MoveCameraRoute
   '/paths': typeof PathsRoute
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/lighting': typeof LightingRoute
   '/lights': typeof LightsRoute
   '/materials': typeof MaterialsRoute
+  '/move-camera': typeof MoveCameraRoute
   '/paths': typeof PathsRoute
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/lighting': typeof LightingRoute
   '/lights': typeof LightsRoute
   '/materials': typeof MaterialsRoute
+  '/move-camera': typeof MoveCameraRoute
   '/paths': typeof PathsRoute
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/lighting'
     | '/lights'
     | '/materials'
+    | '/move-camera'
     | '/paths'
     | '/shapes'
     | '/sides'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/lighting'
     | '/lights'
     | '/materials'
+    | '/move-camera'
     | '/paths'
     | '/shapes'
     | '/sides'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/lighting'
     | '/lights'
     | '/materials'
+    | '/move-camera'
     | '/paths'
     | '/shapes'
     | '/sides'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   LightingRoute: typeof LightingRoute
   LightsRoute: typeof LightsRoute
   MaterialsRoute: typeof MaterialsRoute
+  MoveCameraRoute: typeof MoveCameraRoute
   PathsRoute: typeof PathsRoute
   ShapesRoute: typeof ShapesRoute
   SidesRoute: typeof SidesRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MaterialsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/move-camera': {
+      id: '/move-camera'
+      path: '/move-camera'
+      fullPath: '/move-camera'
+      preLoaderRoute: typeof MoveCameraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/paths': {
       id: '/paths'
       path: '/paths'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   LightingRoute: LightingRoute,
   LightsRoute: LightsRoute,
   MaterialsRoute: MaterialsRoute,
+  MoveCameraRoute: MoveCameraRoute,
   PathsRoute: PathsRoute,
   ShapesRoute: ShapesRoute,
   SidesRoute: SidesRoute,
