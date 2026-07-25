@@ -16,6 +16,7 @@ import { Route as LightsRouteImport } from './routes/lights'
 import { Route as MaterialsRouteImport } from './routes/materials'
 import { Route as MoveCameraRouteImport } from './routes/move-camera'
 import { Route as PathsRouteImport } from './routes/paths'
+import { Route as ScreenResizeRouteImport } from './routes/screen-resize'
 import { Route as ShapesRouteImport } from './routes/shapes'
 import { Route as SidesRouteImport } from './routes/sides'
 import { Route as SimpleRendererRouteImport } from './routes/simple-renderer'
@@ -55,6 +56,11 @@ const PathsRoute = PathsRouteImport.update({
   path: '/paths',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScreenResizeRoute = ScreenResizeRouteImport.update({
+  id: '/screen-resize',
+  path: '/screen-resize',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShapesRoute = ShapesRouteImport.update({
   id: '/shapes',
   path: '/shapes',
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/materials': typeof MaterialsRoute
   '/move-camera': typeof MoveCameraRoute
   '/paths': typeof PathsRoute
+  '/screen-resize': typeof ScreenResizeRoute
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
   '/simple-renderer': typeof SimpleRendererRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/materials': typeof MaterialsRoute
   '/move-camera': typeof MoveCameraRoute
   '/paths': typeof PathsRoute
+  '/screen-resize': typeof ScreenResizeRoute
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
   '/simple-renderer': typeof SimpleRendererRoute
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/materials': typeof MaterialsRoute
   '/move-camera': typeof MoveCameraRoute
   '/paths': typeof PathsRoute
+  '/screen-resize': typeof ScreenResizeRoute
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
   '/simple-renderer': typeof SimpleRendererRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/materials'
     | '/move-camera'
     | '/paths'
+    | '/screen-resize'
     | '/shapes'
     | '/sides'
     | '/simple-renderer'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/materials'
     | '/move-camera'
     | '/paths'
+    | '/screen-resize'
     | '/shapes'
     | '/sides'
     | '/simple-renderer'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/materials'
     | '/move-camera'
     | '/paths'
+    | '/screen-resize'
     | '/shapes'
     | '/sides'
     | '/simple-renderer'
@@ -155,6 +167,7 @@ export interface RootRouteChildren {
   MaterialsRoute: typeof MaterialsRoute
   MoveCameraRoute: typeof MoveCameraRoute
   PathsRoute: typeof PathsRoute
+  ScreenResizeRoute: typeof ScreenResizeRoute
   ShapesRoute: typeof ShapesRoute
   SidesRoute: typeof SidesRoute
   SimpleRendererRoute: typeof SimpleRendererRoute
@@ -211,6 +224,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PathsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/screen-resize': {
+      id: '/screen-resize'
+      path: '/screen-resize'
+      fullPath: '/screen-resize'
+      preLoaderRoute: typeof ScreenResizeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shapes': {
       id: '/shapes'
       path: '/shapes'
@@ -243,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   MaterialsRoute: MaterialsRoute,
   MoveCameraRoute: MoveCameraRoute,
   PathsRoute: PathsRoute,
+  ScreenResizeRoute: ScreenResizeRoute,
   ShapesRoute: ShapesRoute,
   SidesRoute: SidesRoute,
   SimpleRendererRoute: SimpleRendererRoute,

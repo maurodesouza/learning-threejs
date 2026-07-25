@@ -15,6 +15,7 @@ function App() {
 				<Link to="/lights">Lights</Link>
 				<Link to="/materials">Materials</Link>
 				<Link to="/move-camera">Move Camera</Link>
+				<Link to="/screen-resize">Screen Resize</Link>
 			</nav>
 		</main>
 	);
