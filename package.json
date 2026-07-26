@@ -21,6 +21,7 @@
     "@tanstack/react-router": "latest",
     "@tanstack/react-router-devtools": "latest",
     "@tanstack/react-start": "latest",
+    "gsap": "^3.15.0",
     "lil-gui": "^0.21.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
