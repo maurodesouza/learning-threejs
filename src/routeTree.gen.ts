@@ -20,6 +20,7 @@ import { Route as ScreenResizeRouteImport } from './routes/screen-resize'
 import { Route as ShapesRouteImport } from './routes/shapes'
 import { Route as SidesRouteImport } from './routes/sides'
 import { Route as SimpleRendererRouteImport } from './routes/simple-renderer'
+import { Route as UiDebuggerRouteImport } from './routes/ui-debugger'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +77,11 @@ const SimpleRendererRoute = SimpleRendererRouteImport.update({
   path: '/simple-renderer',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UiDebuggerRoute = UiDebuggerRouteImport.update({
+  id: '/ui-debugger',
+  path: '/ui-debugger',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
   '/simple-renderer': typeof SimpleRendererRoute
+  '/ui-debugger': typeof UiDebuggerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
   '/simple-renderer': typeof SimpleRendererRoute
+  '/ui-debugger': typeof UiDebuggerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
   '/simple-renderer': typeof SimpleRendererRoute
+  '/ui-debugger': typeof UiDebuggerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
     | '/shapes'
     | '/sides'
     | '/simple-renderer'
+    | '/ui-debugger'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,6 +154,7 @@ export interface FileRouteTypes {
     | '/shapes'
     | '/sides'
     | '/simple-renderer'
+    | '/ui-debugger'
   id:
     | '__root__'
     | '/'
@@ -157,6 +168,7 @@ export interface FileRouteTypes {
     | '/shapes'
     | '/sides'
     | '/simple-renderer'
+    | '/ui-debugger'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -171,6 +183,7 @@ export interface RootRouteChildren {
   ShapesRoute: typeof ShapesRoute
   SidesRoute: typeof SidesRoute
   SimpleRendererRoute: typeof SimpleRendererRoute
+  UiDebuggerRoute: typeof UiDebuggerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -252,6 +265,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SimpleRendererRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ui-debugger': {
+      id: '/ui-debugger'
+      path: '/ui-debugger'
+      fullPath: '/ui-debugger'
+      preLoaderRoute: typeof UiDebuggerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -267,6 +287,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShapesRoute: ShapesRoute,
   SidesRoute: SidesRoute,
   SimpleRendererRoute: SimpleRendererRoute,
+  UiDebuggerRoute: UiDebuggerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

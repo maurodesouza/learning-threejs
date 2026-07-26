@@ -16,6 +16,7 @@ function App() {
 				<Link to="/materials">Materials</Link>
 				<Link to="/move-camera">Move Camera</Link>
 				<Link to="/screen-resize">Screen Resize</Link>
+				<Link to="/ui-debugger">UI Debugger</Link>
 			</nav>
 		</main>
 	);
