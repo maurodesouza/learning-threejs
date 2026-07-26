@@ -11,11 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DebuggerRouteImport } from './routes/debugger'
+import { Route as DoorRouteImport } from './routes/door'
 import { Route as LightingRouteImport } from './routes/lighting'
 import { Route as LightsRouteImport } from './routes/lights'
 import { Route as MaterialsRouteImport } from './routes/materials'
 import { Route as MoveCameraRouteImport } from './routes/move-camera'
 import { Route as PathsRouteImport } from './routes/paths'
+import { Route as ScenarioRouteImport } from './routes/scenario'
 import { Route as ScreenResizeRouteImport } from './routes/screen-resize'
 import { Route as ShapesRouteImport } from './routes/shapes'
 import { Route as SidesRouteImport } from './routes/sides'
@@ -31,6 +33,11 @@ const IndexRoute = IndexRouteImport.update({
 const DebuggerRoute = DebuggerRouteImport.update({
   id: '/debugger',
   path: '/debugger',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DoorRoute = DoorRouteImport.update({
+  id: '/door',
+  path: '/door',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LightingRoute = LightingRouteImport.update({
@@ -56,6 +63,11 @@ const MoveCameraRoute = MoveCameraRouteImport.update({
 const PathsRoute = PathsRouteImport.update({
   id: '/paths',
   path: '/paths',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScenarioRoute = ScenarioRouteImport.update({
+  id: '/scenario',
+  path: '/scenario',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ScreenResizeRoute = ScreenResizeRouteImport.update({
@@ -92,11 +104,13 @@ const UiDebuggerRoute = UiDebuggerRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/debugger': typeof DebuggerRoute
+  '/door': typeof DoorRoute
   '/lighting': typeof LightingRoute
   '/lights': typeof LightsRoute
   '/materials': typeof MaterialsRoute
   '/move-camera': typeof MoveCameraRoute
   '/paths': typeof PathsRoute
+  '/scenario': typeof ScenarioRoute
   '/screen-resize': typeof ScreenResizeRoute
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
@@ -107,11 +121,13 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/debugger': typeof DebuggerRoute
+  '/door': typeof DoorRoute
   '/lighting': typeof LightingRoute
   '/lights': typeof LightsRoute
   '/materials': typeof MaterialsRoute
   '/move-camera': typeof MoveCameraRoute
   '/paths': typeof PathsRoute
+  '/scenario': typeof ScenarioRoute
   '/screen-resize': typeof ScreenResizeRoute
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
@@ -123,11 +139,13 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/debugger': typeof DebuggerRoute
+  '/door': typeof DoorRoute
   '/lighting': typeof LightingRoute
   '/lights': typeof LightsRoute
   '/materials': typeof MaterialsRoute
   '/move-camera': typeof MoveCameraRoute
   '/paths': typeof PathsRoute
+  '/scenario': typeof ScenarioRoute
   '/screen-resize': typeof ScreenResizeRoute
   '/shapes': typeof ShapesRoute
   '/sides': typeof SidesRoute
@@ -140,11 +158,13 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/debugger'
+    | '/door'
     | '/lighting'
     | '/lights'
     | '/materials'
     | '/move-camera'
     | '/paths'
+    | '/scenario'
     | '/screen-resize'
     | '/shapes'
     | '/sides'
@@ -155,11 +175,13 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/debugger'
+    | '/door'
     | '/lighting'
     | '/lights'
     | '/materials'
     | '/move-camera'
     | '/paths'
+    | '/scenario'
     | '/screen-resize'
     | '/shapes'
     | '/sides'
@@ -170,11 +192,13 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/debugger'
+    | '/door'
     | '/lighting'
     | '/lights'
     | '/materials'
     | '/move-camera'
     | '/paths'
+    | '/scenario'
     | '/screen-resize'
     | '/shapes'
     | '/sides'
@@ -186,11 +210,13 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DebuggerRoute: typeof DebuggerRoute
+  DoorRoute: typeof DoorRoute
   LightingRoute: typeof LightingRoute
   LightsRoute: typeof LightsRoute
   MaterialsRoute: typeof MaterialsRoute
   MoveCameraRoute: typeof MoveCameraRoute
   PathsRoute: typeof PathsRoute
+  ScenarioRoute: typeof ScenarioRoute
   ScreenResizeRoute: typeof ScreenResizeRoute
   ShapesRoute: typeof ShapesRoute
   SidesRoute: typeof SidesRoute
@@ -213,6 +239,13 @@ declare module '@tanstack/react-router' {
       path: '/debugger'
       fullPath: '/debugger'
       preLoaderRoute: typeof DebuggerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/door': {
+      id: '/door'
+      path: '/door'
+      fullPath: '/door'
+      preLoaderRoute: typeof DoorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lighting': {
@@ -248,6 +281,13 @@ declare module '@tanstack/react-router' {
       path: '/paths'
       fullPath: '/paths'
       preLoaderRoute: typeof PathsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scenario': {
+      id: '/scenario'
+      path: '/scenario'
+      fullPath: '/scenario'
+      preLoaderRoute: typeof ScenarioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/screen-resize': {
@@ -298,11 +338,13 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DebuggerRoute: DebuggerRoute,
+  DoorRoute: DoorRoute,
   LightingRoute: LightingRoute,
   LightsRoute: LightsRoute,
   MaterialsRoute: MaterialsRoute,
   MoveCameraRoute: MoveCameraRoute,
   PathsRoute: PathsRoute,
+  ScenarioRoute: ScenarioRoute,
   ScreenResizeRoute: ScreenResizeRoute,
   ShapesRoute: ShapesRoute,
   SidesRoute: SidesRoute,

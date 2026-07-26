@@ -18,6 +18,8 @@ function App() {
 				<Link to="/screen-resize">Screen Resize</Link>
 				<Link to="/ui-debugger">UI Debugger</Link>
 				<Link to="/textures">Textures</Link>
+				<Link to="/door">Door</Link>
+				<Link to="/scenario">Scenario</Link>
 			</nav>
 		</main>
 	);
