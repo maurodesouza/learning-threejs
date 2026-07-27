@@ -20,6 +20,7 @@ function App() {
 				<Link to="/textures">Textures</Link>
 				<Link to="/door">Door</Link>
 				<Link to="/scenario">Scenario</Link>
+				<Link to="/text">Text</Link>
 			</nav>
 		</main>
 	);
