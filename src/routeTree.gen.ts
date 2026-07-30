@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DebuggerRouteImport } from './routes/debugger'
 import { Route as DoorRouteImport } from './routes/door'
+import { Route as HauntedHouseRouteImport } from './routes/haunted-house'
 import { Route as LightingRouteImport } from './routes/lighting'
 import { Route as LightsRouteImport } from './routes/lights'
 import { Route as MaterialsRouteImport } from './routes/materials'
@@ -39,6 +40,11 @@ const DebuggerRoute = DebuggerRouteImport.update({
 const DoorRoute = DoorRouteImport.update({
   id: '/door',
   path: '/door',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HauntedHouseRoute = HauntedHouseRouteImport.update({
+  id: '/haunted-house',
+  path: '/haunted-house',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LightingRoute = LightingRouteImport.update({
@@ -111,6 +117,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/debugger': typeof DebuggerRoute
   '/door': typeof DoorRoute
+  '/haunted-house': typeof HauntedHouseRoute
   '/lighting': typeof LightingRoute
   '/lights': typeof LightsRoute
   '/materials': typeof MaterialsRoute
@@ -129,6 +136,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/debugger': typeof DebuggerRoute
   '/door': typeof DoorRoute
+  '/haunted-house': typeof HauntedHouseRoute
   '/lighting': typeof LightingRoute
   '/lights': typeof LightsRoute
   '/materials': typeof MaterialsRoute
@@ -148,6 +156,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/debugger': typeof DebuggerRoute
   '/door': typeof DoorRoute
+  '/haunted-house': typeof HauntedHouseRoute
   '/lighting': typeof LightingRoute
   '/lights': typeof LightsRoute
   '/materials': typeof MaterialsRoute
@@ -168,6 +177,7 @@ export interface FileRouteTypes {
     | '/'
     | '/debugger'
     | '/door'
+    | '/haunted-house'
     | '/lighting'
     | '/lights'
     | '/materials'
@@ -186,6 +196,7 @@ export interface FileRouteTypes {
     | '/'
     | '/debugger'
     | '/door'
+    | '/haunted-house'
     | '/lighting'
     | '/lights'
     | '/materials'
@@ -204,6 +215,7 @@ export interface FileRouteTypes {
     | '/'
     | '/debugger'
     | '/door'
+    | '/haunted-house'
     | '/lighting'
     | '/lights'
     | '/materials'
@@ -223,6 +235,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DebuggerRoute: typeof DebuggerRoute
   DoorRoute: typeof DoorRoute
+  HauntedHouseRoute: typeof HauntedHouseRoute
   LightingRoute: typeof LightingRoute
   LightsRoute: typeof LightsRoute
   MaterialsRoute: typeof MaterialsRoute
@@ -259,6 +272,13 @@ declare module '@tanstack/react-router' {
       path: '/door'
       fullPath: '/door'
       preLoaderRoute: typeof DoorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/haunted-house': {
+      id: '/haunted-house'
+      path: '/haunted-house'
+      fullPath: '/haunted-house'
+      preLoaderRoute: typeof HauntedHouseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lighting': {
@@ -359,6 +379,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DebuggerRoute: DebuggerRoute,
   DoorRoute: DoorRoute,
+  HauntedHouseRoute: HauntedHouseRoute,
   LightingRoute: LightingRoute,
   LightsRoute: LightsRoute,
   MaterialsRoute: MaterialsRoute,

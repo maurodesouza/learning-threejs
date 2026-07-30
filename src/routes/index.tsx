@@ -21,6 +21,7 @@ function App() {
 				<Link to="/door">Door</Link>
 				<Link to="/scenario">Scenario</Link>
 				<Link to="/text">Text</Link>
+				<Link to="/haunted-house">Haunted House</Link>
 			</nav>
 		</main>
 	);
